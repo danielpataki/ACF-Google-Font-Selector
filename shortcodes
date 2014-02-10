@@ -1,0 +1,62 @@
+/**
+*  AGFS SHORTCODES
+**/
+
+
+add_shortcode('fontlist', 'custom_font_lister');
+
+
+/***********************************
+ *  [fontlist] Custom Font Tester
+ *  Use in a theme typography test page, the shortcode will return the current fonts loaded.
+************************************/
+
+function custom_font_lister(){  
+
+// Test if addon is active
+// if merged with acf-google_font_selector addon, this class test will not be required
+if(class_exists('acf_field_google_font_selector_plugin')){
+    global $wpdb;
+
+    //Setup Var
+    $result = '';
+
+    
+    $font_string = '%:{s:4:"font"%';
+    $postmeta_fonts = $wpdb->get_col($wpdb->prepare(
+      "SELECT DISTINCT(meta_value) FROM $wpdb->postmeta WHERE meta_value LIKE %s",
+      $font_string
+    ));
+
+    $usermeta_fonts = $wpdb->get_col($wpdb->prepare(
+      "SELECT DISTINCT(meta_value) FROM $wpdb->usermeta WHERE meta_value LIKE %s",
+      $font_string
+    ));
+
+    $option_fonts = $wpdb->get_col($wpdb->prepare(
+      "SELECT DISTINCT (option_value) FROM $wpdb->options WHERE option_value LIKE %s",
+      $font_string
+    ));
+
+    $fontmeta = array_merge( $postmeta_fonts, $usermeta_fonts, $option_fonts );
+
+    $fonts = array();
+    foreach( $fontmeta as $font ) {
+      $fonts[] = unserialize( $font );
+    }
+
+    //Construct Result in an array
+    foreach ($fonts as $option){  $font_families[] = $option['font'];  }
+
+    //Filter Result merge duplicates
+    $filtered = array_unique($font_families);
+ 
+    //Construct Display
+    foreach ($filtered as $res){ $result .= $res.'<br/>';}
+
+  }else{
+    $result = 'Please install Advanced Custom Fields: Google Font Selector Addon';
+  } // End addon active check
+
+  return '<div class="highlight">'.$result.'</div>';
+}
