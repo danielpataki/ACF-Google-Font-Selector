@@ -30,7 +30,7 @@ class acf_field_google_font_selector extends acf_field {
 
 		$this->name = 'google_font_selector';
 		$this->label = __('Google Font Selector', 'acf-google_font_selector');
-		$this->category = 'Choice';
+		$this->category = 'choice';
 
 		$this->defaults = array(
 			'include_web_safe_fonts' => true,
