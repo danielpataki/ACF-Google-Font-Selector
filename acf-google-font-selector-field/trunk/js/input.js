@@ -33,6 +33,7 @@
                 jQuery(document).on( 'change', '.acfgfs-font-family select', function(){
                     var new_font = $(this).val()
                     var container = $(this).parents('.acf-input:first');
+                    var preview = container.find('#acfgfs-preview');
                     var variants = container.find( '.acfgfs-font-variants .acfgfs-list' );
                     var subsets = container.find( '.acfgfs-font-subsets .acfgfs-list' );
                     var data = container.find( '.acfgfs-font-data').val();
@@ -54,10 +55,10 @@
                             variants.html( response.variants );
                             subsets.html( response.subsets );
 
-							preview_text = jQuery('#acfgfs-preview div').html();
-							font = new_font.replace( ' ', '+' );
-							jQuery('#acfgfs-preview').html('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=' + font + '"><div style="font-family:' + new_font + '"></div>')
-							jQuery('#acfgfs-preview div').html(preview_text)
+			    preview_text = jQuery(preview).find('div').html();
+			    font = new_font.replace( ' ', '+' );
+			    jQuery(preview).html('<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=' + font + '"><div style="font-family:' + new_font + '"></div>');
+			    jQuery(preview).html(preview_text);
 
                         }
                     });
@@ -94,6 +95,7 @@
                 jQuery(document).on( 'change', '.acfgfs-font-family select', function(){
                     var new_font = $(this).val()
                     var container = $(this).parents('.acfgfs-font-selector:first');
+                    var preview = container.find('#acfgfs-preview');
                     var variants = container.find( '.acfgfs-font-variants .acfgfs-list' );
                     var subsets = container.find( '.acfgfs-font-subsets .acfgfs-list' );
                     var data = container.find( '.acfgfs-font-data').val();
@@ -114,8 +116,10 @@
                             variants.html( response.variants );
                             subsets.html( response.subsets );
 
-							font = new_font.replace( ' ', '+' );
-							jQuery('#acfgfs-preview').html('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=' + font + '"><div style="font-family:' + font + '">This is new a preview of the selected font</div>')
+			    preview_text = jQuery(preview).find('div').html();
+			    font = new_font.replace( ' ', '+' );
+			    jQuery(preview).html('<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=' + font + '"><div style="font-family:' + new_font + '"></div>');
+			    jQuery(preview).html(preview_text);
 
                         }
                     });
