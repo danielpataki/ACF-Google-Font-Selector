@@ -134,7 +134,7 @@ function acfgfs_get_font_dropdown_array( $field = null ) {
  */
 function acfgfs_get_font( $font ) {
     $fonts = acfgfs_get_fonts();
-    return $fonts[$font];
+    return isset($fonts[$font]) ? $fonts[$font] : false;
 }
 
 /**
@@ -230,6 +230,20 @@ function acfgfs_get_web_safe_fonts() {
     return $web_safe;
 }
 
+/**
+ * Web Safe Font Check
+ *
+ * Checks to see if Current Font is a Web Safe Font
+ *
+ * @return array Boolean true if web safe false if otherwise
+ * @author Parapxl
+ * @since 3.0.0
+ *
+ */
+function acfgfs_check_web_safe_fonts( $font ) {
+    $web_safe = acfgfs_get_web_safe_fonts();
+    return array_search($font, $web_safe) !== false ? true : false;
+}
 
 /**
  * Font Variant Array
@@ -245,7 +259,7 @@ function acfgfs_get_web_safe_fonts() {
  */
 function acfgfs_get_font_variant_array( $font ) {
     $font = acfgfs_get_font( $font );
-    return $font['variants'];
+    return isset($fonts[$font]) ? $fonts[$font] : false;
 }
 
 
@@ -263,7 +277,7 @@ function acfgfs_get_font_variant_array( $font ) {
  */
 function acfgfs_get_font_subset_array( $font ) {
     $font = acfgfs_get_font( $font );
-    return $font['subsets'];
+    return isset($font['subsets']) ? $font['subsets'] : false;
 }
 
 /**
