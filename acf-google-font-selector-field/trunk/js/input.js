@@ -53,12 +53,14 @@
                             container.find( '.acfgfs-loader').hide();
                             variants.html( response.variants );
                             subsets.html( response.subsets );
-
-							preview_text = jQuery('#acfgfs-preview div').html();
-							font = new_font.replace( ' ', '+' );
-							container.find('.acfgfs-preview').html('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=' + font + '"><div style="font-family:' + new_font + '"></div>')
-							jQuery('#acfgfs-preview div').html(preview_text)
-
+                            
+                            preview_text = jQuery('.acfgfs-preview div').html();
+                            font         = new_font.replace(' ', '+');
+                            web_safe     = ['Georgia', 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'Times New Roman', 'Times', 'Arial', 'Helvetica', 'Arial Black', 'Gadget', 'Impact', 'Charcoal', 'Lucida Sans Unicode', 'Lucida Grande', 'Tahoma', 'Geneva', 'Trebuchet MS', 'Helvetica', 'Verdana', 'Geneva', 'Courier New', 'Courier', 'Lucida Console', 'Monaco'];
+                            link         = web_safe.indexOf(new_font) < 0 ? '<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=' + font + '">' : '';
+                            
+                            container.find('.acfgfs-preview').html(link + '<div style="font-family:' + new_font + '"></div>');
+                            jQuery('.acfgfs-preview div').html(preview_text);
                         }
                     });
                 });
@@ -113,10 +115,11 @@
                             container.find( '.acfgfs-loader').hide();
                             variants.html( response.variants );
                             subsets.html( response.subsets );
-
-							font = new_font.replace( ' ', '+' );
-							container.find('.acfgfs-preview').html('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=' + font + '"><div style="font-family:' + font + '">This is new a preview of the selected font</div>')
-
+                            
+                            font     = new_font.replace(' ', '+');
+                            web_safe = ['Georgia', 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'Times New Roman', 'Times', 'Arial', 'Helvetica', 'Arial Black', 'Gadget', 'Impact', 'Charcoal', 'Lucida Sans Unicode', 'Lucida Grande', 'Tahoma', 'Geneva', 'Trebuchet MS', 'Helvetica', 'Verdana', 'Geneva', 'Courier New', 'Courier', 'Lucida Console', 'Monaco'];
+                            link     = web_safe.indexOf(new_font) < 0 ? '<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=' + font + '">' : '';
+                            container.find('.acfgfs-preview').html(link + '<div style="font-family:' + new_font + '">This is a new preview of the selected font</div>');
                         }
                     });
                 });
