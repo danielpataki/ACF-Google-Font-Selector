@@ -93,7 +93,7 @@ class acf_google_font_selector_common {
 		$font_string = implode( '|', $font_element );
 
 		$subset_string = '';
-		$request = 'http://fonts.googleapis.com/css?family=' . $font_string . '&subset=' . $subset_string;
+		$request = '//fonts.googleapis.com/css?family=' . $font_string . '&subset=' . $subset_string;
 
 		wp_enqueue_style( 'acfgfs-enqueue-fonts', $request );
 
