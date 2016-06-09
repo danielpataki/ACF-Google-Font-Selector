@@ -259,7 +259,7 @@ function acfgfs_check_web_safe_fonts( $font ) {
  */
 function acfgfs_get_font_variant_array( $font ) {
     $font = acfgfs_get_font( $font );
-    return isset($fonts[$font]) ? $fonts[$font] : false;
+    return isset($font['variants']) ? $font['variants'] : array();
 }
 
 
@@ -277,7 +277,7 @@ function acfgfs_get_font_variant_array( $font ) {
  */
 function acfgfs_get_font_subset_array( $font ) {
     $font = acfgfs_get_font( $font );
-    return isset($font['subsets']) ? $font['subsets'] : false;
+    return isset($font['subsets']) ? $font['subsets'] : array();
 }
 
 /**
