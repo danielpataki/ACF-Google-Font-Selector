@@ -56,7 +56,7 @@
 
 							preview_text = jQuery('#acfgfs-preview div').html();
 							font = new_font.replace( ' ', '+' );
-							container.find('.acfgfs-preview').html('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=' + font + '"><div style="font-family:' + new_font + '"></div>')
+							container.find('.acfgfs-preview').html('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=' + font + '"><div style="font-family:' + new_font + '">This is a preview of the selected font</div>')
 							jQuery('#acfgfs-preview div').html(preview_text)
 
                         }
