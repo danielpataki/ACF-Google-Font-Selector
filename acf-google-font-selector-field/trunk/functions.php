@@ -22,26 +22,33 @@
   * @since 3.0.0
   *
   */
- function acfgfs_get_fonts_to_enqueue() {
-     if( is_singular() ) {
-         global $post;
-         $post_fields = get_field_objects( $post->ID );
-     }
-     $post_fields = ( empty( $post_fields ) ) ? array() : $post_fields;
-     $option_fields = get_field_objects( 'options' );
-     $option_fields = ( empty( $option_fields ) ) ? array() : $option_fields;
-     $fields = array_merge( $post_fields, $option_fields );
-     $font_fields = array();
-     foreach( $fields as $field ) {
-         if( !empty( $field['type'] ) && 'google_font_selector' == $field['type'] && !empty( $field['value'] ) ) {
-             $font_fields[] = $field['value'];
+function acfgfs_get_fonts_to_enqueue() {
+   if ( is_singular() ) {
+     global $post;
+     $post_fields = get_field_objects( $post->ID );
+   }
+   
+   $post_fields   = ( empty( $post_fields ) ) ? array() : $post_fields;
+   $option_fields = get_field_objects( 'options' );
+   $option_fields = ( empty( $option_fields ) ) ? array() : $option_fields;
+   $fields        = array_merge( $post_fields, $option_fields );
+   $font_fields   = array();
+   
+   foreach( $fields as $field ) {
+     if ( !empty( $field['type'] ) && 'google_font_selector' == $field['type'] && !empty( $field['value'] ) ) $font_fields[] = $field['value'];
+     else if ( isset( $field['sub_fields'] ) && !empty( $field['sub_fields'] ) ) {
+       foreach( $field['sub_fields'] as $sub_field ) {
+         if ( !empty( $sub_field['type'] ) && 'google_font_selector' == $sub_field['type'] ) {
+           $font_fields[] = $field['value'][$sub_field['name']];
          }
+       }
      }
-
-     $font_fields = apply_filters( 'acfgfs/enqueued_fonts', $font_fields );
-
-     return $font_fields;
- }
+   }
+   
+   $font_fields = apply_filters( 'acfgfs/enqueued_fonts', $font_fields );
+   
+   return $font_fields;
+}
 
  /**
   * Enqueue Fonts

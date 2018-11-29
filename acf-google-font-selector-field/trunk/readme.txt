@@ -88,6 +88,9 @@ function my_font_list( $fonts ) {
 
 == Changelog ==
 
+= 3.1.0 (2018-11-29)
+* Added support for ACF 5.6.0 Group field.
+
 = 3.0.2 (2016-06-08)
 * Added check for web safe font for live preview.
 * Changed link protocol to HTTPS per Google's deprecation of the non-secured calls.
