@@ -88,6 +88,14 @@ function my_font_list( $fonts ) {
 
 == Changelog ==
 
+= 3.0.2 (2016-06-08)
+* Added check for web safe font for live preview.
+* Changed link protocol to HTTPS per Google's deprecation of the non-secured calls.
+* Chaged acfgfs_get_font_subset_array to return false if no subsets.
+* Fixed errors when saving a web safe font.
+* Fixed selector for preview section.
+* Fixed typos in acfgfs_get_font_variant_array function.
+
 = 3.0.1 (2015-04-26) =
 * Added acfgfs/font_dropdown_array filter
 * Fixed a faulty font preview mechanism when multiple font options are added
