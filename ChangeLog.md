@@ -1,3 +1,6 @@
+### 3.1.1 (2019-04-08)
+- Fixed no preview text showing for ACF5
+
 ### 3.1.0 (2018-11-29)
 - Added support for ACF 5.6.0 Group field.
 
