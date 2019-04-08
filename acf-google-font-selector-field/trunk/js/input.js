@@ -59,7 +59,7 @@
                             web_safe     = ['Georgia', 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'Times New Roman', 'Times', 'Arial', 'Helvetica', 'Arial Black', 'Gadget', 'Impact', 'Charcoal', 'Lucida Sans Unicode', 'Lucida Grande', 'Tahoma', 'Geneva', 'Trebuchet MS', 'Helvetica', 'Verdana', 'Geneva', 'Courier New', 'Courier', 'Lucida Console', 'Monaco'];
                             link         = web_safe.indexOf(new_font) < 0 ? '<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=' + font + '">' : '';
                             
-                            container.find('.acfgfs-preview').html(link + '<div style="font-family:' + new_font + '"></div>');
+                            container.find('.acfgfs-preview').html(link + '<div style="font-family:' + new_font + '">This is a preview of the selected font</div>');
                             jQuery('.acfgfs-preview div').html(preview_text);
                         }
                     });
