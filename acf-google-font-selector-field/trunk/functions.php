@@ -45,6 +45,13 @@ function acfgfs_get_fonts_to_enqueue() {
      }
    }
    
+   $web_safe = acfgfs_get_web_safe_fonts();
+   foreach ($font_fields as $key => $font) {
+     if ( in_array($font['font'], $web_safe) ) {
+       unset($font_fields[$key]);
+     }
+   }
+   
    $font_fields = apply_filters( 'acfgfs/enqueued_fonts', $font_fields );
    
    return $font_fields;
