@@ -92,6 +92,12 @@ function acfgfs_google_font_enqueue(){
     $subset_string = implode( ',', $subsets );
     $font_string = implode( '|', $font_element );
     $request = '//fonts.googleapis.com/css?family=' . $font_string . '&subset=' . $subset_string;
+    
+    // Font Display
+    if ( $font_display = get_option('acfgfs_font_display') ) {
+      if ( $font_display !== 'none' )  $request .= "&display={$font_display}";
+    }
+    
     wp_enqueue_style( 'acfgfs-enqueue-fonts', $request );
 }
 
