@@ -131,7 +131,7 @@ class acf_field_google_font_selector extends acf_field
 
 		$subsets = array_unique( $subsets );
 		$subsets = ( !empty( $subsets ) ) ? '?subset=' . implode( ', ', $subsets ) : '';
-		$request = "http://fonts.googleapis.com/css?family=" . implode( '|', $fonts ) . $subsets;
+		$request = "//fonts.googleapis.com/css?family=" . implode( '|', $fonts ) . $subsets;
 
 		echo "<link href='" . $request . "' rel='stylesheet' type='text/css'>";
 

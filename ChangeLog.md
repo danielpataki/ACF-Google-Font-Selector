@@ -1,8 +1,21 @@
+### 3.1.1 (2019-04-08)
+- Fixed no preview text showing for ACF5
+
+### 3.1.0 (2018-11-29)
+- Added support for ACF 5.6.0 Group field.
+
+### 3.0.2 (2016-06-08)
+- Added check for web safe font for live preview.
+- Changed link protocol to HTTPS per Google's deprecation of the non-secured calls.
+- Chaged acfgfs_get_font_subset_array to return false if no subsets.
+- Fixed errors when saving a web safe font.
+- Fixed selector for preview section.
+- Fixed typos in acfgfs_get_font_variant_array function.
+
 ### 3.0.1 (2015-04-26)
 - Added acfgfs/font_dropdown_array filter
 - Fixed a faulty font preview mechanism when multiple font options are added
 - Fixed an error when web safe fonts were selected
-
 
 ### 3.0.0 (2015-04-21)
 - Updated for WordPress 4.2
@@ -10,7 +23,7 @@
 - Added Hungarian translation
 - Complete rewritten and better documented
 - Uses transients to store fonts
-- Better behaviour on font change
+- Better behaviour on font chang
 
 ### 2.2.1
 - Updated for WordPress 4.1

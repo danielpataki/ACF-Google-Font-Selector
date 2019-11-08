@@ -45,13 +45,6 @@ function acfgfs_get_fonts_to_enqueue() {
      }
    }
    
-   $web_safe = acfgfs_get_web_safe_fonts();
-   foreach ($font_fields as $key => $font) {
-     if ( in_array($font['font'], $web_safe) ) {
-       unset($font_fields[$key]);
-     }
-   }
-   
    $font_fields = apply_filters( 'acfgfs/enqueued_fonts', $font_fields );
    
    return $font_fields;
@@ -92,12 +85,6 @@ function acfgfs_google_font_enqueue(){
     $subset_string = implode( ',', $subsets );
     $font_string = implode( '|', $font_element );
     $request = '//fonts.googleapis.com/css?family=' . $font_string . '&subset=' . $subset_string;
-    
-    // Font Display
-    if ( $font_display = get_option('acfgfs_font_display') ) {
-      if ( $font_display !== 'none' )  $request .= "&display={$font_display}";
-    }
-    
     wp_enqueue_style( 'acfgfs-enqueue-fonts', $request );
 }
 

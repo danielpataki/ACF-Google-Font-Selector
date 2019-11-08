@@ -4,7 +4,7 @@
 Plugin Name: Advanced Custom Fields: Google Font Selector
 Plugin URI: https://github.com/danielpataki/ACF-Google-Font-Selector
 Description: A field for Advanced Custom Fields which allows users to select Google fonts with advanced options
-Version: 3.1.3
+Version: 3.1.2
 Author: Daniel Pataki
 Author URI: http://danielpataki.com
 License: GPLv2 or later
@@ -109,8 +109,7 @@ function acfgfs_settings_page() {
  *
  */
 function acfgfs_register_settings() {
-  register_setting( 'acfgfs', 'acfgfs_api_key' );
-  register_setting( 'acfgfs', 'acfgfs_font_display' );
+	register_setting( 'acfgfs', 'acfgfs_api_key' );
 }
 
 
@@ -133,26 +132,10 @@ function acfgfs_settings_page_content() {
     <?php settings_fields( 'acfgfs' ); ?>
     <?php do_settings_sections( 'acfgfs' ); ?>
     <table class="form-table">
-      <tr valign="top">
+        <tr valign="top">
         <th scope="row"><?php _e( 'Google API Key', 'acf-google-font-selector-field' ) ?></th>
         <td><input type="text" name="acfgfs_api_key" value="<?php echo esc_attr( get_option('acfgfs_api_key') ); ?>" /></td>
-      </tr>
-      <tr valign="top">
-        <th scope="row"><?php _e( 'Font Display', 'acf-google-font-selector-field' ) ?></th>
-        <td>
-          <select name="acfgfs_font_display">
-            <option value="none">None</option>
-            <?php
-              $options  = array('fallback' => 'Fallback', 'swap' => 'Swap');
-              $selected = get_option('acfgfs_font_display');
-              
-              foreach ($options as $option => $name) {
-                printf('<option value="%s"%s>%s</option>', $option, ($selected && $selected === $option ? ' selected' : ''), $name);
-              }
-            ?>
-          </select>
-        </td>
-      </tr>
+        </tr>
     </table>
 
     <?php
